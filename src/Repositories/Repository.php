@@ -28,9 +28,9 @@ class Repository {
 
 		//$this->hostname = 'localhost';
 		$this->hostname = $_ENV['DB_HOST'];
-		$this->username = 'root';
-		$this->databaseName = 'posts_web_app2';
-		$this->databasePassword = 'root';
+		$this->username = $_ENV['DB_USER'];
+		$this->databaseName = $_ENV['DB_NAME'];
+		$this->databasePassword = $_ENV['DB_PASS'];
 		$this->charset = 'utf8mb4';
 
 		$dsn = "mysql:host=$this->hostname;dbname=$this->databaseName;charset=$this->charset";
