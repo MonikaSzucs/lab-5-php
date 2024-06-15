@@ -59,7 +59,26 @@ class PostRepositoryTest extends TestCase {
 		$this->assertIsArray($allPosts);
 		$this->assertNotEmpty($allPosts);
 		$this->assertContainsOnlyInstancesOf(Post::class, $allPosts);
-		$this->assertContains($createdPost, $allPosts);
+
+		print_r("inside the array: ");
+		print_r($allPosts);
+		print_r(" *** inside created post: ");
+		print_r($createdPost);
+		//$this->assert
+		//$this->assertContains([$createdPost], $allPosts);
+		// Check that the created post is in the list of all posts
+		$found = false;
+		foreach ($allPosts as $post) {
+			if ($post->id == $createdPost->id &&
+				$post->title == $createdPost->title &&
+				$post->body == $createdPost->body &&
+				$post->created_at == $createdPost->created_at &&
+				$post->updated_at == $createdPost->updated_at) {
+				$found = true;
+				break;
+			}
+		}
+		$this->assertTrue($found, 'Created post was not found in the list of all posts.');
 	}
 
 	public function testPostUpdate() {
