@@ -59,13 +59,7 @@ class PostRepositoryTest extends TestCase {
 		$this->assertIsArray($allPosts);
 		$this->assertNotEmpty($allPosts);
 		$this->assertContainsOnlyInstancesOf(Post::class, $allPosts);
-
-		print_r("inside the array: ");
-		print_r($allPosts);
-		print_r(" *** inside created post: ");
-		print_r($createdPost);
-		//$this->assert
-		//$this->assertContains([$createdPost], $allPosts);
+		
 		// Check that the created post is in the list of all posts
 		$found = false;
 		foreach ($allPosts as $post) {
